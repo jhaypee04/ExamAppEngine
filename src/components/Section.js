@@ -1,13 +1,20 @@
 import { data } from "../database/data.js";
 
-const Section = () => {
-  console.log(data);
+const Section = ({ get }) => {
   return (
     <section>
       <header>Questions</header>
       <div className="questions-numbers-container">
         {data.map((item) => {
-          return <span className="box blue">{item.questionNumber}</span>;
+          return (
+            <span
+              onClick={() => get(item.questionNumber)}
+              className="box blue"
+              key={item.questionNumber}
+            >
+              {item.questionNumber}
+            </span>
+          );
         })}
       </div>
       <div className="selection-type-container">
@@ -16,7 +23,7 @@ const Section = () => {
           style={{
             display: "flex",
             alignItems: "center",
-            justifyContent: "space-around"
+            justifyContent: "space-around",
           }}
         >
           <div style={{ display: "flex", alignItems: "center" }}>
